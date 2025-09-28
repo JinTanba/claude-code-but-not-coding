@@ -1,0 +1,5 @@
+pymongo>=4.6.0
+claude-code-sdk
+python-dotenv>=1.0.0
+supabase>=2.3.0
+Pillow>=10.0.0

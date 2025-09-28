@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>World Context Protocol Thumbnail - Square</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .thumbnail-container {
+            width: 1200px;
+            height: 1200px;
+            background: radial-gradient(ellipse at center, #1a1f23 0%, #0F1113 100%);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .background-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('edited_20250928_152755.png');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.85;
+            z-index: 1;
+        }
+
+        .content-overlay {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            padding: 40px 50px;
+        }
+
+        .headline {
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+            font-size: 44px;
+            line-height: 1.1;
+            color: #FFFFFF;
+            letter-spacing: -0.02em;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+            text-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+            max-width: 700px;
+        }
+
+        .subtitle {
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+            font-size: 22px;
+            line-height: 1.3;
+            color: rgba(255, 255, 255, 0.85);
+            margin-bottom: 30px;
+            max-width: 800px;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+        }
+
+        .pipeline-container {
+            position: absolute;
+            top: 55%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            flex-direction: row;
+            gap: 20px;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            width: 90%;
+        }
+
+        .pipeline-step {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 6px;
+            padding: 12px 18px;
+            color: #FFFFFF;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            font-size: 14px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.45);
+            text-align: center;
+            position: relative;
+            flex: 1;
+            min-width: 120px;
+            max-width: 200px;
+        }
+
+        .pipeline-step.text {
+            background: linear-gradient(135deg, rgba(0, 229, 255, 0.1), rgba(0, 229, 255, 0.05));
+            border-color: rgba(0, 229, 255, 0.2);
+        }
+
+        .pipeline-step.embedding {
+            background: linear-gradient(135deg, rgba(155, 225, 93, 0.1), rgba(155, 225, 93, 0.05));
+            border-color: rgba(155, 225, 93, 0.2);
+        }
+
+        .pipeline-step.semid {
+            background: linear-gradient(135deg, rgba(0, 229, 255, 0.15), rgba(98, 126, 234, 0.15));
+            border-color: rgba(0, 229, 255, 0.3);
+            color: #00E5FF;
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 700;
+            text-shadow: 0 0 8px rgba(0, 229, 255, 0.4);
+            box-shadow: 0 0 20px rgba(0, 229, 255, 0.2), 0 4px 12px rgba(0, 0, 0, 0.45);
+        }
+
+        .pipeline-step.registry {
+            background: linear-gradient(135deg, rgba(98, 126, 234, 0.1), rgba(98, 126, 234, 0.05));
+            border-color: rgba(98, 126, 234, 0.2);
+        }
+
+        .semid-badge {
+            position: absolute;
+            top: 380px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, #00E5FF 0%, #627EEA 100%);
+            border-radius: 12px;
+            padding: 16px 32px;
+            color: #FFFFFF;
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 700;
+            font-size: 24px;
+            letter-spacing: 0.1em;
+            box-shadow:
+                0 0 30px rgba(0, 229, 255, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2),
+                0 8px 24px rgba(0, 0, 0, 0.5);
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+
+        .bottom-pills {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .pill {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 25px;
+            padding: 8px 18px;
+            color: #FFFFFF;
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 700;
+            font-size: 14px;
+            backdrop-filter: blur(10px);
+            white-space: nowrap;
+        }
+
+        .pill.highlight {
+            background: linear-gradient(135deg, rgba(255, 184, 107, 0.15), rgba(255, 122, 89, 0.15));
+            border-color: rgba(255, 184, 107, 0.3);
+            color: #FFB86B;
+        }
+
+        .corner-teaser {
+            position: absolute;
+            top: 40px;
+            right: 50px;
+            color: rgba(255, 255, 255, 0.7);
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+            font-size: 14px;
+            text-align: right;
+        }
+
+        .ethereum-glow {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100px;
+            height: 100px;
+            background: radial-gradient(circle, rgba(98, 126, 234, 0.3) 0%, transparent 70%);
+            border-radius: 50%;
+            filter: blur(8px);
+            z-index: 1;
+        }
+
+        .tech-icons {
+            position: absolute;
+            right: 80px;
+            top: 70%;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            transform: translateY(-50%);
+        }
+
+        .tech-icon {
+            width: 35px;
+            height: 35px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 700;
+            font-size: 11px;
+            color: #FFFFFF;
+            text-shadow: 0 0 6px currentColor;
+        }
+
+        .tech-icon.ipfs {
+            background: linear-gradient(135deg, #00E5FF, #0097A7);
+            box-shadow: 0 0 15px rgba(0, 229, 255, 0.3);
+        }
+
+        .tech-icon.miniml {
+            background: linear-gradient(135deg, #9BE15D, #689F38);
+            box-shadow: 0 0 15px rgba(155, 225, 93, 0.3);
+        }
+
+        .tech-icon.golay {
+            background: linear-gradient(135deg, #FFB86B, #FF7043);
+            box-shadow: 0 0 15px rgba(255, 184, 107, 0.3);
+        }
+
+        .tech-icon.stake {
+            background: linear-gradient(135deg, #627EEA, #3F51B5);
+            box-shadow: 0 0 15px rgba(98, 126, 234, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <div class="thumbnail-container">
+        <div class="background-image"></div>
+        <div class="ethereum-glow"></div>
+
+        <div class="content-overlay">
+            <h1 class="headline">Ethereum as a World Context Machine</h1>
+            <p class="subtitle">WCP — Deterministic 24‑bit SemID to unify AI context</p>
+
+            <div class="semid-badge">0xA3.F1.7C</div>
+
+            <div class="pipeline-container">
+                <div class="pipeline-step text">TEXT</div>
+                <div class="pipeline-step embedding">EMBEDDING<br>MiniLM</div>
+                <div class="pipeline-step semid">SemID<br>24‑bit</div>
+                <div class="pipeline-step registry">REGISTRY<br>Ethereum</div>
+            </div>
+
+            <div class="tech-icons">
+                <div class="tech-icon ipfs">IPFS</div>
+                <div class="tech-icon miniml">ML</div>
+                <div class="tech-icon golay">GOL</div>
+                <div class="tech-icon stake">ETH</div>
+            </div>
+
+            <div class="bottom-pills">
+                <div class="pill highlight">24‑bit SemID</div>
+                <div class="pill">384→24</div>
+                <div class="pill">Staking & Slashing</div>
+            </div>
+
+            <div class="corner-teaser">Why 24 bits? See the design</div>
+        </div>
+    </div>
+</body>
+</html>

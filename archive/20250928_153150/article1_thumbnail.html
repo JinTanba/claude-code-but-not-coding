@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MANON - ニセモノ smillin Thumbnail</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue:wght@400&family=Montserrat:wght@500,700&family=Noto+Sans+JP:wght@400,500,700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #000;
+            color: white;
+            font-family: 'Montserrat', 'Noto Sans JP', sans-serif;
+            overflow: hidden;
+        }
+
+        .thumbnail-container {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #000;
+        }
+
+        /* 1:1 Instagram Format */
+        .thumbnail-square {
+            position: relative;
+            display: none;
+            width: 600px;
+            height: 600px;
+            background-image: url('edited_20250928_152759.png');
+            background-size: cover;
+            background-position: center;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        /* Overlay for better text readability */
+        .thumbnail-square::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(
+                180deg,
+                rgba(0,0,0,0.3) 0%,
+                rgba(0,0,0,0.1) 30%,
+                rgba(0,0,0,0.1) 70%,
+                rgba(0,0,0,0.6) 100%
+            );
+            z-index: 1;
+        }
+
+        /* Main Title */
+        .main-title {
+            position: absolute;
+            bottom: 80px;
+            left: 30px;
+            right: 30px;
+            z-index: 3;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 48px;
+            font-weight: 400;
+            color: #FFFFFF;
+            text-shadow:
+                3px 3px 0px #000000,
+                -1px -1px 0px #000000,
+                1px -1px 0px #000000,
+                -1px 1px 0px #000000,
+                0px 0px 10px rgba(255, 45, 149, 0.8);
+            line-height: 0.9;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        /* Neon Pink Accent */
+        .main-title .accent {
+            color: #FF2D95;
+            text-shadow:
+                3px 3px 0px #000000,
+                -1px -1px 0px #000000,
+                1px -1px 0px #000000,
+                -1px 1px 0px #000000,
+                0px 0px 15px #FF2D95,
+                0px 0px 30px #FF2D95;
+        }
+
+        /* Artist Name */
+        .artist-name {
+            position: absolute;
+            top: 30px;
+            left: 30px;
+            z-index: 3;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 32px;
+            font-weight: 700;
+            color: #00D1FF;
+            text-shadow:
+                2px 2px 0px #000000,
+                -1px -1px 0px #000000,
+                0px 0px 10px #00D1FF;
+            letter-spacing: 3px;
+        }
+
+        /* Date Badge */
+        .date-badge {
+            position: absolute;
+            bottom: 30px;
+            right: 30px;
+            z-index: 3;
+            background: rgba(0, 0, 0, 0.75);
+            border: 2px solid #FF2D95;
+            border-radius: 20px;
+            padding: 8px 16px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 16px;
+            font-weight: 500;
+            color: #FFFFFF;
+            text-shadow: 1px 1px 2px #000000;
+            box-shadow: 0px 0px 15px rgba(255, 45, 149, 0.6);
+        }
+
+        /* Credit Badge */
+        .credit-badge {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            z-index: 3;
+            background: rgba(0, 0, 0, 0.65);
+            border: 1px solid #00D1FF;
+            border-radius: 15px;
+            padding: 6px 12px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 12px;
+            font-weight: 400;
+            color: #00D1FF;
+            text-shadow: 1px 1px 2px #000000;
+            box-shadow: 0px 0px 10px rgba(0, 209, 255, 0.4);
+        }
+
+        /* Diagonal Vinyl Tape Effect */
+        .vinyl-tape {
+            position: absolute;
+            bottom: 110px;
+            left: -50px;
+            width: 350px;
+            height: 12px;
+            background: linear-gradient(90deg, #FF2D95 0%, #FF69B4 100%);
+            transform: rotate(-8deg);
+            z-index: 2;
+            box-shadow:
+                0px 3px 6px rgba(0,0,0,0.4),
+                0px 0px 20px rgba(255, 45, 149, 0.6);
+            opacity: 0.9;
+        }
+
+        /* Glitch Lines */
+        .glitch-line-left {
+            position: absolute;
+            left: 0;
+            top: 25%;
+            width: 4px;
+            height: 150px;
+            background: linear-gradient(180deg, #00D1FF 0%, transparent 50%, #FF2D95 100%);
+            z-index: 2;
+            opacity: 0.8;
+            animation: glitchFlicker 2s infinite alternate;
+        }
+
+        .glitch-line-right {
+            position: absolute;
+            right: 0;
+            top: 45%;
+            width: 3px;
+            height: 120px;
+            background: linear-gradient(180deg, #FF2D95 0%, transparent 50%, #00D1FF 100%);
+            z-index: 2;
+            opacity: 0.7;
+            animation: glitchFlicker 1.5s infinite alternate-reverse;
+        }
+
+        @keyframes glitchFlicker {
+            0% { opacity: 0.3; }
+            25% { opacity: 0.8; }
+            50% { opacity: 0.5; }
+            75% { opacity: 0.9; }
+            100% { opacity: 0.4; }
+        }
+
+        /* 16:9 YouTube Format (Hidden by default) */
+        .thumbnail-wide {
+            display: block;
+            position: relative;
+            width: 800px;
+            height: 450px;
+            background-image: url('edited_20250928_152759.png');
+            background-size: cover;
+            background-position: center;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        /* Media Query for wider screens - show 16:9 format */
+        @media (min-aspect-ratio: 16/10) {
+            .thumbnail-square {
+                display: none;
+            }
+            .thumbnail-wide {
+                display: block;
+            }
+
+            /* Adjust text for 16:9 format */
+            .thumbnail-wide .main-title {
+                font-size: 56px;
+                bottom: 60px;
+                left: 40px;
+            }
+
+            .thumbnail-wide .artist-name {
+                font-size: 36px;
+                top: 40px;
+                left: 40px;
+            }
+
+            .thumbnail-wide .date-badge {
+                bottom: 40px;
+                right: 40px;
+                font-size: 18px;
+                padding: 10px 20px;
+            }
+
+            .thumbnail-wide .credit-badge {
+                top: 40px;
+                right: 40px;
+                font-size: 14px;
+                padding: 8px 16px;
+            }
+
+            .thumbnail-wide .vinyl-tape {
+                bottom: 100px;
+                left: -40px;
+                width: 400px;
+                height: 14px;
+            }
+        }
+
+        /* Format Toggle Buttons */
+        .format-controls {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 10;
+            display: flex;
+            gap: 10px;
+        }
+
+        .format-btn {
+            background: rgba(0, 0, 0, 0.8);
+            border: 1px solid #00D1FF;
+            color: #00D1FF;
+            padding: 8px 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .format-btn:hover {
+            background: #00D1FF;
+            color: #000;
+        }
+
+        .format-btn.active {
+            background: #FF2D95;
+            border-color: #FF2D95;
+            color: #FFF;
+        }
+    </style>
+</head>
+<body>
+    <div class="format-controls">
+        <button class="format-btn active" onclick="showFormat('square')">1:1 Instagram</button>
+        <button class="format-btn" onclick="showFormat('wide')">16:9 YouTube</button>
+    </div>
+
+    <div class="thumbnail-container">
+        <!-- 1:1 Instagram Format -->
+        <div class="thumbnail-square" id="square-format">
+            <div class="glitch-line-left"></div>
+            <div class="glitch-line-right"></div>
+            <div class="vinyl-tape"></div>
+            <div class="artist-name">MANON</div>
+            <div class="main-title">ニセモノ <span class="accent">smillin</span></div>
+            <div class="date-badge">9.19 配信</div>
+            <div class="credit-badge">Spotify Hyperpop pick</div>
+        </div>
+
+        <!-- 16:9 YouTube Format -->
+        <div class="thumbnail-wide" id="wide-format">
+            <div class="glitch-line-left"></div>
+            <div class="glitch-line-right"></div>
+            <div class="vinyl-tape"></div>
+            <div class="artist-name">MANON</div>
+            <div class="main-title">ニセモノ <span class="accent">smillin</span></div>
+            <div class="date-badge">9.19 配信</div>
+            <div class="credit-badge">Prod. knoak</div>
+        </div>
+    </div>
+
+    <script>
+        function showFormat(format) {
+            const squareFormat = document.getElementById('square-format');
+            const wideFormat = document.getElementById('wide-format');
+            const buttons = document.querySelectorAll('.format-btn');
+
+            // Remove active class from all buttons
+            buttons.forEach(btn => btn.classList.remove('active'));
+
+            if (format === 'square') {
+                squareFormat.style.display = 'block';
+                wideFormat.style.display = 'none';
+                buttons[0].classList.add('active');
+            } else {
+                squareFormat.style.display = 'none';
+                wideFormat.style.display = 'block';
+                buttons[1].classList.add('active');
+            }
+        }
+    </script>
+</body>
+</html>

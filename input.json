@@ -1,0 +1,26 @@
+[
+    {
+        "id": "article1",
+        "article_content_path": "resource/article1/article.md",
+        "provided_images_path": ["resource/article1/main.jpg"]
+    },
+    {
+        "id": "article2",
+        "article_content_path": "resource/article2/article.md",
+        "provided_images_path": ["resource/article2/ceo.jpg","resource/article2/logo.png"]
+    },
+    {
+        "id": "article3",
+        "article_content_path": "resource/article3/article.md",
+        "provided_images_path": ["resource/article3/5538ca70-91c7-11f0-a9a7-e72d996c597aScreenshot 2025-09-15 at 9.02.40.png"]
+    },
+    {
+        "id": "article4",
+        "article_content_path": "resource/article4/article.md",
+        "provided_images_path": ["29501-4444-292d59ddc5aee6c970bf7d782a8fbac3-1219x1999.webp"]
+    },{
+        "id": "article5",
+        "article_content_path": "resource/article5/article.md",
+        "provided_images_path": ["resource/article5/58521-7-4f05f1a0596b040aa13e6638edecb30f-1920x1080.webp"]
+    }
+]

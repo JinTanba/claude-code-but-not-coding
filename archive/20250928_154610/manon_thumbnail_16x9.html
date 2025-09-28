@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MANON - ニセモノ smilin Thumbnail 16:9</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .thumbnail-container {
+            position: relative;
+            width: 1920px;
+            height: 1080px;
+            background-image: url('edited_20250928_154226.png');
+            background-size: cover;
+            background-position: center;
+            overflow: hidden;
+            font-family: 'Noto Sans JP', 'Inter', sans-serif;
+        }
+
+        /* Safe margin area */
+        .content-area {
+            position: absolute;
+            top: 10%;
+            left: 10%;
+            right: 10%;
+            bottom: 10%;
+            width: 80%;
+            height: 80%;
+        }
+
+        /* Main headline */
+        .main-headline {
+            position: absolute;
+            top: 0;
+            left: 0;
+            font-size: 120px;
+            font-weight: 900;
+            color: #FFFFFF;
+            text-stroke: 3px #000000;
+            -webkit-text-stroke: 3px #000000;
+            text-shadow: 8px 8px 0px rgba(0,0,0,0.12);
+            line-height: 0.9;
+            letter-spacing: -0.02em;
+            text-transform: uppercase;
+            max-width: 50%;
+            z-index: 10;
+        }
+
+        /* Artist name */
+        .artist-name {
+            position: absolute;
+            top: 240px;
+            left: 0;
+            font-size: 50px;
+            font-weight: 700;
+            color: #00E5FF;
+            text-stroke: 2px #FFFFFF;
+            -webkit-text-stroke: 2px #FFFFFF;
+            text-shadow: 2px 2px 0px rgba(0,0,0,0.3);
+            letter-spacing: 0.1em;
+            z-index: 10;
+        }
+
+        /* Release badge */
+        .release-badge {
+            position: absolute;
+            top: 0;
+            right: 0;
+            background: #FF2D95;
+            color: #FFFFFF;
+            padding: 16px 24px;
+            border-radius: 40px;
+            font-size: 30px;
+            font-weight: 800;
+            letter-spacing: 0.05em;
+            text-align: center;
+            box-shadow: 0 6px 20px rgba(255,45,149,0.4);
+            z-index: 15;
+        }
+
+        /* Event strip */
+        .event-strip {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            background: rgba(0,0,0,0.6);
+            color: #FFFFFF;
+            padding: 10px 20px;
+            font-size: 24px;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+            backdrop-filter: blur(10px);
+            z-index: 12;
+        }
+
+        .event-price {
+            color: #FF2D95;
+            font-weight: 800;
+        }
+
+        /* Credibility line */
+        .credibility {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            background: rgba(0,0,0,0.4);
+            color: #CCCCCC;
+            padding: 6px 12px;
+            font-size: 16px;
+            font-weight: 400;
+            letter-spacing: 0.01em;
+            backdrop-filter: blur(5px);
+            z-index: 12;
+        }
+
+        .spotify-icon {
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            background: #1DB954;
+            border-radius: 50%;
+            margin-right: 6px;
+            vertical-align: middle;
+        }
+
+        .producer-credit {
+            color: #00E5FF;
+        }
+
+        /* Glitch overlay effects */
+        .glitch-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 5;
+        }
+
+        .glitch-line {
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #00E5FF, transparent);
+            opacity: 0.3;
+        }
+
+        .glitch-line:nth-child(1) { top: 25%; animation: glitch1 2s infinite; }
+        .glitch-line:nth-child(2) { top: 60%; animation: glitch2 3s infinite; }
+        .glitch-line:nth-child(3) { top: 80%; animation: glitch3 2.5s infinite; }
+
+        @keyframes glitch1 {
+            0%, 100% { opacity: 0; transform: translateX(-100%); }
+            50% { opacity: 0.3; transform: translateX(100%); }
+        }
+
+        @keyframes glitch2 {
+            0%, 100% { opacity: 0; transform: translateX(100%); }
+            50% { opacity: 0.2; transform: translateX(-100%); }
+        }
+
+        @keyframes glitch3 {
+            0%, 100% { opacity: 0; transform: translateX(-50%); }
+            50% { opacity: 0.4; transform: translateX(150%); }
+        }
+
+        /* Noise texture overlay */
+        .noise-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image:
+                radial-gradient(circle at 25% 25%, #FF2D95 1px, transparent 1px),
+                radial-gradient(circle at 75% 75%, #00E5FF 1px, transparent 1px);
+            background-size: 40px 40px, 60px 60px;
+            opacity: 0.08;
+            pointer-events: none;
+            z-index: 3;
+        }
+    </style>
+</head>
+<body>
+    <div class="thumbnail-container">
+        <!-- Background noise texture -->
+        <div class="noise-overlay"></div>
+
+        <!-- Glitch effects -->
+        <div class="glitch-overlay">
+            <div class="glitch-line"></div>
+            <div class="glitch-line"></div>
+            <div class="glitch-line"></div>
+        </div>
+
+        <!-- Content area with safe margins -->
+        <div class="content-area">
+            <!-- Main headline -->
+            <div class="main-headline">
+                ニセモノ<br>smilin
+            </div>
+
+            <!-- Artist name -->
+            <div class="artist-name">
+                MANON
+            </div>
+
+            <!-- Release badge -->
+            <div class="release-badge">
+                9/19<br>RELEASE
+            </div>
+
+            <!-- Event strip -->
+            <div class="event-strip">
+                PINK NOISE — 9/20 ENTER SHIBUYA <span class="event-price">¥2,000</span>
+            </div>
+
+            <!-- Credibility line -->
+            <div class="credibility">
+                <span class="spotify-icon"></span>Spotify "Hyperpop" pick · prod. <span class="producer-credit">knoak</span>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

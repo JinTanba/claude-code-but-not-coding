@@ -1,0 +1,20 @@
+[
+  {
+    "id": "article1",
+    "thambnail_image_html_screenshot_path": "outputs/article1_thumbnail_4x5.png",
+    "title": "MANON、新曲『ニセモノ smillin』 〜 偽りだらけの日常を突き破るエモーショナル・アンセム、9/19配信",
+    "subtitle": "Hyperpopからロックへ進化。リリース・イベント「PINK NOISE」9/20＠ENTER SHIBUYA（¥2,000）"
+  },
+  {
+    "id": "article2",
+    "thambnail_image_html_screenshot_path": "outputs/article2_thumbnail_16x9.png",
+    "title": "Claude Opus 4.1 — Anthropicの最も高度なAIが開発者ワークフローを変える",
+    "subtitle": "言語・推論・分析・コーディング・ビジョンを1つで。今すぐclaude.aiでデモを確認"
+  },
+  {
+    "id": "article3",
+    "thambnail_image_html_screenshot_path": "outputs/article3_thumbnail_16x9.png",
+    "title": "How Ethereum Becomes the World's AI Context Layer — Introducing the 24‑bit SemID",
+    "subtitle": "World Context Protocol (WCP) turns Ethereum into a global 'context machine': deterministic SemIDs, stake-backed quality, and new economics for sustainable knowledge curation."
+  }
+]

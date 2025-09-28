@@ -1,0 +1,20 @@
+[
+  {
+    "id": "article1",
+    "thambnail_image_html_path": "outputs/article1_thumbnail.html",
+    "title": "MANON、新曲『ニセモノ smillin』 — 偽りの笑顔をぶち壊すエモーショナル・アンセム",
+    "subtitle": "9/19配信｜ハイパーポップの衝動をロックへ昇華した21歳の新モード"
+  },
+  {
+    "id": "article2",
+    "thambnail_image_html_path": "outputs/article2_thumbnail.html",
+    "title": "Claude Opus 4.1: Anthropic's Most Capable AI — Meet the Next Generation of Reasoning & Coding",
+    "subtitle": "Plus Claude Sonnet 4 — High-performance efficiency. Try Claude now at claude.ai"
+  },
+  {
+    "id": "article3",
+    "thambnail_image_html_path": "outputs/article3_thumbnail.html",
+    "title": "Ethereum as a World Context Machine — WCP's Deterministic 24‑bit SemID to Unify AI",
+    "subtitle": "World Context Protocol (WCP) reimagines Ethereum as the global context ledger: deterministic SemIDs, economic quality filters, and a practical tech stack (MiniLM, IPFS, Golay)."
+  }
+]

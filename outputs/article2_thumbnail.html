@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>World Context Protocol Thumbnail</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .thumbnail-container {
+            width: 1200px;
+            height: 675px;
+            background: #0b0f18;
+            position: relative;
+            overflow: hidden;
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* Background texture and provided images as subtle background */
+        .background-layer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background:
+                radial-gradient(circle at 30% 40%, rgba(60, 60, 255, 0.03) 0%, transparent 50%),
+                radial-gradient(circle at 70% 60%, rgba(0, 230, 255, 0.02) 0%, transparent 50%),
+                linear-gradient(45deg,
+                    rgba(255, 255, 255, 0.005) 0%,
+                    transparent 25%,
+                    rgba(255, 255, 255, 0.01) 50%,
+                    transparent 75%);
+            opacity: 0.15;
+        }
+
+        /* CEO background image - dimmed and blurred */
+        .ceo-background {
+            position: absolute;
+            top: -20%;
+            right: -10%;
+            width: 50%;
+            height: 120%;
+            background-image: url('../resource/article2/ceo.jpg');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.08;
+            filter: blur(8px) grayscale(70%);
+            transform: scale(1.1);
+        }
+
+        /* Logo background - very subtle */
+        .logo-background {
+            position: absolute;
+            bottom: -20%;
+            left: -10%;
+            width: 40%;
+            height: 60%;
+            background-image: url('../resource/article2/logo.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            opacity: 0.03;
+            filter: blur(6px);
+        }
+
+        /* Grid texture overlay */
+        .grid-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image:
+                linear-gradient(rgba(0, 230, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 230, 255, 0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+            opacity: 0.2;
+        }
+
+        /* Globe nodes background */
+        .globe-nodes {
+            position: absolute;
+            top: 50%;
+            right: 15%;
+            width: 400px;
+            height: 400px;
+            background-image: url('./globe_nodes.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            opacity: 0.25;
+            transform: translateY(-50%);
+            z-index: 1;
+        }
+
+        /* Coordinate lines radiating from chip */
+        .coordinate-lines {
+            position: absolute;
+            top: 50%;
+            right: 25%;
+            width: 300px;
+            height: 300px;
+            transform: translateY(-50%);
+            z-index: 2;
+        }
+
+        .coordinate-lines::before,
+        .coordinate-lines::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 200px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent 0%, #00E6FF 50%, transparent 100%);
+            opacity: 0.3;
+        }
+
+        .coordinate-lines::before {
+            transform: translate(-50%, -50%) rotate(30deg);
+        }
+
+        .coordinate-lines::after {
+            transform: translate(-50%, -50%) rotate(-30deg);
+        }
+
+        /* Main content areas */
+        .text-content {
+            position: absolute;
+            top: 10%;
+            left: 8%;
+            z-index: 10;
+            color: white;
+        }
+
+        .headline {
+            font-family: 'Inter', sans-serif;
+            font-weight: 900;
+            font-size: 72px;
+            line-height: 0.95;
+            letter-spacing: -0.5px;
+            color: #FFFFFF;
+            margin-bottom: 12px;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+        }
+
+        .subtitle {
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            font-size: 32px;
+            color: #C9D6E6;
+            margin-bottom: 20px;
+            text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        /* ETH Chip - focal point */
+        .eth-chip {
+            position: absolute;
+            top: 50%;
+            right: 20%;
+            width: 280px;
+            height: 280px;
+            background-image: url('./eth_chip.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            transform: translateY(-50%);
+            filter:
+                drop-shadow(0 8px 20px rgba(0, 0, 0, 0.4))
+                drop-shadow(0 0 15px rgba(0, 230, 255, 0.3));
+            z-index: 5;
+        }
+
+        /* Bottom content */
+        .bottom-content {
+            position: absolute;
+            bottom: 8%;
+            left: 8%;
+            z-index: 10;
+        }
+
+        .technical-badge {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 18px;
+            color: #00E6FF;
+            background: rgba(7, 16, 37, 0.65);
+            padding: 8px 12px;
+            border-radius: 6px;
+            display: inline-block;
+            margin-bottom: 8px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 230, 255, 0.2);
+        }
+
+        .footer-text {
+            font-family: 'Inter', sans-serif;
+            font-weight: 400;
+            font-size: 14px;
+            color: #7f8b98;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 12px;
+        }
+
+        /* Accent elements */
+        .accent-dot {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: #FF6A3D;
+            border-radius: 50%;
+            box-shadow: 0 0 8px rgba(255, 106, 61, 0.6);
+        }
+
+        .accent-dot.dot1 {
+            top: 25%;
+            right: 35%;
+        }
+
+        .accent-dot.dot2 {
+            bottom: 30%;
+            right: 15%;
+        }
+
+        .accent-dot.dot3 {
+            top: 60%;
+            left: 25%;
+        }
+
+        /* Responsive for different export sizes */
+        @media (max-width: 1600px) {
+            .thumbnail-container {
+                transform-origin: top left;
+            }
+        }
+
+        /* High-res version styles */
+        .thumbnail-container.high-res {
+            width: 1600px;
+            height: 900px;
+        }
+
+        .thumbnail-container.high-res .headline {
+            font-size: 96px;
+        }
+
+        .thumbnail-container.high-res .subtitle {
+            font-size: 42px;
+        }
+
+        .thumbnail-container.high-res .eth-chip {
+            width: 350px;
+            height: 350px;
+        }
+
+        .thumbnail-container.high-res .technical-badge {
+            font-size: 24px;
+            padding: 12px 16px;
+        }
+
+        .thumbnail-container.high-res .footer-text {
+            font-size: 16px;
+        }
+
+        /* Small version styles */
+        .thumbnail-container.small {
+            width: 300px;
+            height: 169px;
+        }
+
+        .thumbnail-container.small .headline {
+            font-size: 28px;
+            line-height: 1.0;
+        }
+
+        .thumbnail-container.small .subtitle {
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+
+        .thumbnail-container.small .eth-chip {
+            width: 100px;
+            height: 100px;
+            right: 15%;
+        }
+
+        .thumbnail-container.small .technical-badge {
+            font-size: 8px;
+            padding: 3px 6px;
+            margin-bottom: 4px;
+        }
+
+        .thumbnail-container.small .footer-text {
+            font-size: 6px;
+        }
+
+        .thumbnail-container.small .globe-nodes {
+            width: 120px;
+            height: 120px;
+            right: 10%;
+        }
+
+        .thumbnail-container.small .text-content {
+            top: 8%;
+            left: 6%;
+        }
+
+        .thumbnail-container.small .bottom-content {
+            bottom: 6%;
+            left: 6%;
+        }
+    </style>
+</head>
+<body>
+    <div class="thumbnail-container" id="thumbnail">
+        <!-- Background layers -->
+        <div class="background-layer"></div>
+        <div class="ceo-background"></div>
+        <div class="logo-background"></div>
+        <div class="grid-overlay"></div>
+
+        <!-- Globe nodes background -->
+        <div class="globe-nodes"></div>
+
+        <!-- Coordinate lines -->
+        <div class="coordinate-lines"></div>
+
+        <!-- Main ETH chip focal point -->
+        <div class="eth-chip"></div>
+
+        <!-- Text content -->
+        <div class="text-content">
+            <h1 class="headline">World Context<br>Protocol</h1>
+            <p class="subtitle">Ethereum → World Context Machine</p>
+        </div>
+
+        <!-- Bottom content -->
+        <div class="bottom-content">
+            <div class="technical-badge">Deterministic 24‑bit SemID (3 bytes)</div>
+            <div class="footer-text">SemID = CREATE2(keccak256(golay(bin(embedding))))</div>
+        </div>
+
+        <!-- Accent dots -->
+        <div class="accent-dot dot1"></div>
+        <div class="accent-dot dot2"></div>
+        <div class="accent-dot dot3"></div>
+    </div>
+</body>
+</html>

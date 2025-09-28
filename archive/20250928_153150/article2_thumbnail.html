@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Claude Opus 4.1 Announcement Thumbnail</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            background: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .thumbnail-container {
+            width: 1200px;
+            height: 675px;
+            display: flex;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+            position: relative;
+        }
+
+        .image-section {
+            width: 55%;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .ceo-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        .text-section {
+            width: 45%;
+            height: 100%;
+            background: linear-gradient(135deg, #0b0f12 0%, #111318 100%);
+            padding: 36px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+        }
+
+        .anthropic-logo {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            height: 24px;
+            opacity: 0.9;
+        }
+
+        .headline {
+            font-family: 'Inter', sans-serif;
+            font-weight: 800;
+            font-size: 42px;
+            line-height: 1.1;
+            color: #FFFFFF;
+            letter-spacing: -0.02em;
+            margin-bottom: 16px;
+            text-transform: uppercase;
+        }
+
+        .subhead {
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+            font-size: 18px;
+            line-height: 1.4;
+            color: #d6eef6;
+            margin-bottom: 24px;
+        }
+
+        .model-chips {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-bottom: 32px;
+        }
+
+        .chip {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.06);
+            border: 2px solid #00d1ff;
+            border-radius: 6px;
+            padding: 6px 12px;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            font-size: 12px;
+            color: #e6fbff;
+            text-transform: uppercase;
+            letter-spacing: 0.025em;
+            align-self: flex-start;
+        }
+
+        .cta-button {
+            position: absolute;
+            bottom: 16px;
+            right: 16px;
+            background: #00d1ff;
+            color: #061018;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+            font-size: 16px;
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+
+        .cta-button:hover {
+            background: #00b8e6;
+            transform: translateY(-1px);
+        }
+
+        /* Square crop version (hidden by default) */
+        .thumbnail-square {
+            width: 1200px;
+            height: 1200px;
+            display: none;
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+        }
+
+        .square-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #0b0f12 0%, #111318 100%);
+        }
+
+        .square-ceo-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 60%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            mask: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 70%, rgba(0,0,0,0) 100%);
+            -webkit-mask: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 70%, rgba(0,0,0,0) 100%);
+        }
+
+        .square-text {
+            position: absolute;
+            right: 40px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 45%;
+            z-index: 2;
+        }
+
+        .square-headline {
+            font-family: 'Inter', sans-serif;
+            font-weight: 800;
+            font-size: 48px;
+            line-height: 1.1;
+            color: #FFFFFF;
+            letter-spacing: -0.02em;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .square-subhead {
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+            font-size: 20px;
+            line-height: 1.4;
+            color: #d6eef6;
+            margin-bottom: 28px;
+        }
+
+        .square-logo {
+            position: absolute;
+            top: 40px;
+            right: 40px;
+            height: 32px;
+            opacity: 0.9;
+        }
+
+        .square-cta {
+            position: absolute;
+            bottom: 40px;
+            right: 40px;
+            background: #00d1ff;
+            color: #061018;
+            padding: 16px 32px;
+            border-radius: 8px;
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+            font-size: 18px;
+            text-decoration: none;
+        }
+
+        /* Toggle controls */
+        .controls {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 10px;
+            border-radius: 6px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .controls button {
+            margin-right: 10px;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 4px;
+            background: #00d1ff;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .controls button.active {
+            background: #0066cc;
+        }
+    </style>
+</head>
+<body>
+    <div class="controls">
+        <button id="wideBtn" class="active" onclick="showWide()">16:9 (1200x675)</button>
+        <button id="squareBtn" onclick="showSquare()">1:1 (1200x1200)</button>
+    </div>
+
+    <!-- 16:9 Wide Thumbnail -->
+    <div class="thumbnail-container" id="wideThumbnail">
+        <div class="image-section">
+            <img src="edited_20250928_152811.png" alt="CEO Portrait" class="ceo-image">
+        </div>
+        <div class="text-section">
+            <img src="../resource/article2/logo.png" alt="Anthropic" class="anthropic-logo">
+
+            <h1 class="headline">Claude Opus 4.1<br>Most Capable AI</h1>
+
+            <p class="subhead">Advanced reasoning • Production-grade coding</p>
+
+            <div class="model-chips">
+                <span class="chip">Also: Claude Sonnet 4 — High-performance</span>
+            </div>
+
+            <a href="#" class="cta-button">Try Claude — claude.ai</a>
+        </div>
+    </div>
+
+    <!-- 1:1 Square Thumbnail -->
+    <div class="thumbnail-square" id="squareThumbnail">
+        <div class="square-background"></div>
+        <img src="edited_20250928_152811.png" alt="CEO Portrait" class="square-ceo-image">
+        <img src="../resource/article2/logo.png" alt="Anthropic" class="square-logo">
+
+        <div class="square-text">
+            <h1 class="square-headline">Claude Opus 4.1<br>Most Capable AI</h1>
+            <p class="square-subhead">Advanced reasoning<br>Production-grade coding</p>
+            <div class="model-chips">
+                <span class="chip">Also: Claude Sonnet 4</span>
+            </div>
+        </div>
+
+        <a href="#" class="square-cta">Try Claude — claude.ai</a>
+    </div>
+
+    <script>
+        function showWide() {
+            document.getElementById('wideThumbnail').style.display = 'flex';
+            document.getElementById('squareThumbnail').style.display = 'none';
+            document.getElementById('wideBtn').classList.add('active');
+            document.getElementById('squareBtn').classList.remove('active');
+        }
+
+        function showSquare() {
+            document.getElementById('wideThumbnail').style.display = 'none';
+            document.getElementById('squareThumbnail').style.display = 'block';
+            document.getElementById('wideBtn').classList.remove('active');
+            document.getElementById('squareBtn').classList.add('active');
+        }
+    </script>
+</body>
+</html>

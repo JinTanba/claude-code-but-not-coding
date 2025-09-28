@@ -1,0 +1,20 @@
+[
+  {
+    "id": "article1",
+    "thambnail_image_html_path": "/Users/tanbajintaro/MACBOOK_LLM/chefofstaff/outputs/article1_thumbnail.html",
+    "title": "MANON、新曲『ニセモノ smillin』— 偽りの笑顔を突き破るエモーショナル・アンセム",
+    "subtitle": "9/19 配信開始｜9/20 渋谷でリリースイベント『PINK NOISE』開催 — ハイパーポップから飛躍した21歳の反撃"
+  },
+  {
+    "id": "article2",
+    "thambnail_image_html_path": "/Users/tanbajintaro/MACBOOK_LLM/chefofstaff/outputs/article2_thumbnail.html",
+    "title": "Claude Opus 4.1: Anthropicの次世代AIが"複雑推論"と"高度コーディング"の基準を塗り替える",
+    "subtitle": "テキスト・コード・視覚を一つに。今すぐclaude.aiで試し、最初のAPI呼び出しを行ってください。"
+  },
+  {
+    "id": "article3",
+    "thambnail_image_html_path": "/Users/tanbajintaro/MACBOOK_LLM/chefofstaff/outputs/article3_thumbnail.html",
+    "title": "3 BYTES TO ALIGN THE WORLD'S AIs — World Context Protocol (WCP)",
+    "subtitle": "Ethereum becomes the global 'context ledger' with deterministic 24‑bit SemID, client‑side generation, and stake‑backed rewards"
+  }
+]

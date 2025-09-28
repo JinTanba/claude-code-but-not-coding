@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WCP Thumbnail - 3 BYTES TO ALIGN THE WORLD'S AIs</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .thumbnail-container {
+            width: 1200px;
+            height: 630px;
+            background: #0B0E14;
+            position: relative;
+            overflow: hidden;
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* Background gradient for depth */
+        .thumbnail-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 70% 50%, rgba(98, 126, 234, 0.1) 0%, rgba(11, 14, 20, 1) 70%);
+        }
+
+        /* Left content area */
+        .content-left {
+            position: absolute;
+            left: 5%;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 55%;
+            z-index: 2;
+        }
+
+        .headline {
+            font-family: 'Inter', sans-serif;
+            font-weight: 900;
+            font-size: 48px;
+            line-height: 1.1;
+            color: #FFFFFF;
+            letter-spacing: -1px;
+            margin-bottom: 16px;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+        }
+
+        .subheadline {
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            font-size: 22px;
+            line-height: 1.3;
+            color: #BFC7D6;
+            margin-bottom: 24px;
+        }
+
+        .credibility-band {
+            font-family: 'Inter', sans-serif;
+            font-weight: 400;
+            font-size: 14px;
+            color: #BFC7D6;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-variant: small-caps;
+        }
+
+        /* Right visual area */
+        .visual-area {
+            position: absolute;
+            right: 5%;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 35%;
+            height: 80%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2;
+        }
+
+        /* Ethereum logo background */
+        .ethereum-bg {
+            position: absolute;
+            width: 120px;
+            height: 120px;
+            opacity: 0.3;
+            filter: blur(1px);
+            z-index: 1;
+        }
+
+        .ethereum-diamond {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, #627EEA 0%, #4C6FE0 100%);
+            clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+        }
+
+        /* SemID Badge */
+        .semid-badge {
+            position: relative;
+            background: linear-gradient(135deg, rgba(0, 229, 255, 0.2) 0%, rgba(0, 229, 255, 0.1) 100%);
+            border: 2px solid #FF7A59;
+            border-radius: 12px;
+            padding: 16px 24px;
+            backdrop-filter: blur(10px);
+            box-shadow:
+                0 0 30px rgba(0, 229, 255, 0.4),
+                inset 0 0 20px rgba(0, 229, 255, 0.1);
+            z-index: 3;
+        }
+
+        .semid-text {
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+            font-size: 28px;
+            color: #00E5FF;
+            text-shadow: 0 0 10px rgba(0, 229, 255, 0.5);
+            letter-spacing: 1px;
+        }
+
+        /* AI Agent Icons */
+        .agent-icon {
+            position: absolute;
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, #FF7A59 0%, rgba(255, 122, 89, 0.8) 100%);
+            border-radius: 50%;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            z-index: 2;
+        }
+
+        .agent-icon::before {
+            content: '🤖';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 16px;
+            filter: grayscale(0.3);
+        }
+
+        .agent-1 {
+            top: 20%;
+            right: 20%;
+        }
+
+        .agent-2 {
+            bottom: 20%;
+            right: 30%;
+        }
+
+        .agent-3 {
+            top: 50%;
+            left: -10%;
+        }
+
+        /* Connection Lines */
+        .connection-line {
+            position: absolute;
+            height: 2px;
+            background: linear-gradient(90deg, rgba(0, 229, 255, 0.6) 0%, rgba(0, 229, 255, 0.2) 100%);
+            box-shadow: 0 0 6px rgba(0, 229, 255, 0.4);
+            z-index: 1;
+        }
+
+        .line-1 {
+            width: 80px;
+            top: 30%;
+            right: 40%;
+            transform: rotate(-25deg);
+        }
+
+        .line-2 {
+            width: 70px;
+            bottom: 30%;
+            right: 45%;
+            transform: rotate(20deg);
+        }
+
+        .line-3 {
+            width: 90px;
+            top: 50%;
+            left: 15%;
+            transform: rotate(0deg);
+        }
+
+        /* Connection nodes */
+        .connection-node {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background: #00E5FF;
+            border-radius: 50%;
+            box-shadow: 0 0 8px rgba(0, 229, 255, 0.8);
+        }
+
+        .node-1 {
+            top: 28%;
+            right: 35%;
+        }
+
+        .node-2 {
+            bottom: 28%;
+            right: 40%;
+        }
+
+        .node-3 {
+            top: 50%;
+            left: 25%;
+        }
+
+        /* CTA element */
+        .cta {
+            position: absolute;
+            bottom: 5%;
+            right: 5%;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            font-size: 16px;
+            color: #627EEA;
+            background: rgba(98, 126, 234, 0.1);
+            padding: 8px 16px;
+            border-radius: 6px;
+            border: 1px solid rgba(98, 126, 234, 0.3);
+        }
+
+        /* Responsive square version */
+        @media (max-aspect-ratio: 1/1) {
+            .thumbnail-container {
+                width: 1080px;
+                height: 1080px;
+            }
+
+            .content-left {
+                position: static;
+                transform: none;
+                width: 90%;
+                margin: 0 auto;
+                padding-top: 80px;
+                text-align: center;
+            }
+
+            .headline {
+                font-size: 42px;
+                margin-bottom: 20px;
+            }
+
+            .subheadline {
+                font-size: 20px;
+                margin-bottom: 40px;
+            }
+
+            .visual-area {
+                position: static;
+                transform: none;
+                width: 80%;
+                margin: 40px auto;
+                height: 300px;
+            }
+
+            .credibility-band {
+                position: absolute;
+                bottom: 80px;
+                left: 50%;
+                transform: translateX(-50%);
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="thumbnail-container">
+        <!-- Left content area -->
+        <div class="content-left">
+            <h1 class="headline">3 BYTES TO ALIGN<br>THE WORLD'S AIs</h1>
+            <p class="subheadline">World Context Protocol — Deterministic 24‑bit SemID on Ethereum</p>
+            <p class="credibility-band">Deterministic · Client‑side · Staking & Demand Rewards</p>
+        </div>
+
+        <!-- Right visual area -->
+        <div class="visual-area">
+            <!-- Ethereum background logo -->
+            <div class="ethereum-bg">
+                <div class="ethereum-diamond"></div>
+            </div>
+
+            <!-- SemID Badge -->
+            <div class="semid-badge">
+                <div class="semid-text">SemID: 0xA3:4F:1C</div>
+            </div>
+
+            <!-- AI Agent Icons -->
+            <div class="agent-icon agent-1"></div>
+            <div class="agent-icon agent-2"></div>
+            <div class="agent-icon agent-3"></div>
+
+            <!-- Connection Lines -->
+            <div class="connection-line line-1"></div>
+            <div class="connection-line line-2"></div>
+            <div class="connection-line line-3"></div>
+
+            <!-- Connection Nodes -->
+            <div class="connection-node node-1"></div>
+            <div class="connection-node node-2"></div>
+            <div class="connection-node node-3"></div>
+        </div>
+
+        <!-- CTA -->
+        <div class="cta">Read →</div>
+    </div>
+</body>
+</html>

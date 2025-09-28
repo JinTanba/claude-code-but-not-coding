@@ -1,0 +1,124 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <defs>
+    <radialGradient id="backgroundGradient" cx="50%" cy="50%">
+      <stop offset="0%" style="stop-color:#1a1f23"/>
+      <stop offset="100%" style="stop-color:#0F1113"/>
+    </radialGradient>
+
+    <linearGradient id="semidGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#00E5FF"/>
+      <stop offset="100%" style="stop-color:#627EEA"/>
+    </linearGradient>
+
+    <linearGradient id="pillGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:rgba(255,184,107,0.15)"/>
+      <stop offset="100%" style="stop-color:rgba(255,122,89,0.15)"/>
+    </linearGradient>
+
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <filter id="ethereum-glow">
+      <feGaussianBlur stdDeviation="8" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1920" height="1080" fill="url(#backgroundGradient)"/>
+
+  <!-- Ethereum Diamond Glow -->
+  <circle cx="864" cy="486" r="60" fill="rgba(98,126,234,0.3)" filter="url(#ethereum-glow)"/>
+
+  <!-- Ethereum Diamond -->
+  <polygon points="864,426 914,486 864,546 814,486" fill="#627EEA" opacity="0.8"/>
+
+  <!-- Provider Nodes -->
+  <circle cx="700" cy="486" r="25" fill="#FF7A59"/>
+  <circle cx="1028" cy="486" r="25" fill="#FF7A59"/>
+
+  <!-- Connection Lines -->
+  <line x1="725" y1="486" x2="814" y2="486" stroke="rgba(191,199,255,0.6)" stroke-width="2"/>
+  <line x1="914" y1="486" x2="1003" y2="486" stroke="rgba(191,199,255,0.6)" stroke-width="2"/>
+
+  <!-- Pipeline Steps -->
+  <g id="pipeline-steps">
+    <!-- TEXT -->
+    <rect x="1200" y="300" width="280" height="60" rx="6" fill="rgba(255,255,255,0.05)" stroke="rgba(0,229,255,0.2)" stroke-width="1"/>
+    <text x="1340" y="340" font-family="Inter, sans-serif" font-weight="600" font-size="18" fill="#FFFFFF" text-anchor="middle">TEXT</text>
+
+    <!-- EMBEDDING -->
+    <rect x="1200" y="380" width="280" height="80" rx="6" fill="rgba(255,255,255,0.05)" stroke="rgba(155,225,93,0.2)" stroke-width="1"/>
+    <text x="1340" y="410" font-family="Inter, sans-serif" font-weight="600" font-size="16" fill="#FFFFFF" text-anchor="middle">EMBEDDING — MiniLM</text>
+    <text x="1340" y="430" font-family="Inter, sans-serif" font-weight="400" font-size="14" fill="rgba(255,255,255,0.8)" text-anchor="middle">(all-MiniLM-L6-v2)</text>
+
+    <!-- SemID -->
+    <rect x="1200" y="480" width="280" height="80" rx="6" fill="rgba(0,229,255,0.15)" stroke="rgba(0,229,255,0.3)" stroke-width="1" filter="url(#glow)"/>
+    <text x="1340" y="510" font-family="JetBrains Mono, monospace" font-weight="700" font-size="16" fill="#00E5FF" text-anchor="middle">SemID — Deterministic 24‑bit</text>
+    <text x="1340" y="530" font-family="JetBrains Mono, monospace" font-weight="400" font-size="14" fill="#00E5FF" text-anchor="middle">(384 → 24)</text>
+
+    <!-- REGISTRY -->
+    <rect x="1200" y="580" width="280" height="80" rx="6" fill="rgba(255,255,255,0.05)" stroke="rgba(98,126,234,0.2)" stroke-width="1"/>
+    <text x="1340" y="610" font-family="Inter, sans-serif" font-weight="600" font-size="16" fill="#FFFFFF" text-anchor="middle">REGISTRY — Ethereum</text>
+    <text x="1340" y="630" font-family="Inter, sans-serif" font-weight="400" font-size="14" fill="rgba(255,255,255,0.8)" text-anchor="middle">(L2 → L1 checkpoints)</text>
+  </g>
+
+  <!-- Pipeline Arrows -->
+  <polygon points="1490,340 1500,330 1500,350" fill="rgba(191,199,255,0.6)"/>
+  <polygon points="1490,420 1500,410 1500,430" fill="rgba(191,199,255,0.6)"/>
+  <polygon points="1490,520 1500,510 1500,530" fill="rgba(191,199,255,0.6)"/>
+
+  <!-- Main Title -->
+  <text x="80" y="160" font-family="Inter, sans-serif" font-weight="700" font-size="64" fill="#FFFFFF" letter-spacing="-0.02em">
+    <tspan x="80" dy="0">ETHEREUM AS A</tspan>
+    <tspan x="80" dy="70">WORLD CONTEXT MACHINE</tspan>
+  </text>
+
+  <!-- Subtitle -->
+  <text x="80" y="320" font-family="Inter, sans-serif" font-weight="500" font-size="32" fill="rgba(255,255,255,0.85)">
+    <tspan x="80" dy="0">WCP — Deterministic 24‑bit SemID</tspan>
+    <tspan x="80" dy="40">to unify AI context</tspan>
+  </text>
+
+  <!-- SemID Badge -->
+  <rect x="880" y="300" width="200" height="60" rx="12" fill="url(#semidGradient)" filter="url(#glow)"/>
+  <text x="980" y="340" font-family="JetBrains Mono, monospace" font-weight="700" font-size="28" fill="#FFFFFF" text-anchor="middle" letter-spacing="0.1em">0xA3.F1.7C</text>
+
+  <!-- Tech Icons -->
+  <g id="tech-icons" transform="translate(1520, 640)">
+    <rect x="0" y="0" width="40" height="40" rx="8" fill="url(#semidGradient)"/>
+    <text x="20" y="26" font-family="JetBrains Mono, monospace" font-weight="700" font-size="12" fill="#FFFFFF" text-anchor="middle">IPFS</text>
+
+    <rect x="0" y="55" width="40" height="40" rx="8" fill="#9BE15D"/>
+    <text x="20" y="81" font-family="JetBrains Mono, monospace" font-weight="700" font-size="12" fill="#FFFFFF" text-anchor="middle">ML</text>
+
+    <rect x="0" y="110" width="40" height="40" rx="8" fill="#FFB86B"/>
+    <text x="20" y="136" font-family="JetBrains Mono, monospace" font-weight="700" font-size="12" fill="#FFFFFF" text-anchor="middle">GOL</text>
+
+    <rect x="0" y="165" width="40" height="40" rx="8" fill="#627EEA"/>
+    <text x="20" y="191" font-family="JetBrains Mono, monospace" font-weight="700" font-size="12" fill="#FFFFFF" text-anchor="middle">ETH</text>
+  </g>
+
+  <!-- Bottom Pills -->
+  <g id="bottom-pills" transform="translate(80, 960)">
+    <rect x="0" y="0" width="150" height="40" rx="20" fill="url(#pillGradient)" stroke="rgba(255,184,107,0.3)" stroke-width="1"/>
+    <text x="75" y="26" font-family="JetBrains Mono, monospace" font-weight="700" font-size="16" fill="#FFB86B" text-anchor="middle">24‑bit SemID</text>
+
+    <rect x="170" y="0" width="80" height="40" rx="20" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+    <text x="210" y="26" font-family="JetBrains Mono, monospace" font-weight="700" font-size="16" fill="#FFFFFF" text-anchor="middle">384→24</text>
+
+    <rect x="270" y="0" width="180" height="40" rx="20" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+    <text x="360" y="26" font-family="JetBrains Mono, monospace" font-weight="700" font-size="16" fill="#FFFFFF" text-anchor="middle">Staking &amp; Slashing</text>
+  </g>
+
+  <!-- Corner Teaser -->
+  <text x="1840" y="80" font-family="Inter, sans-serif" font-weight="500" font-size="16" fill="rgba(255,255,255,0.7)" text-anchor="end">Why 24 bits? See the design</text>
+</svg>

@@ -1,0 +1,20 @@
+[
+  {
+    "id": "article1",
+    "thambnail_image_html_screenshot_path": "outputs/manon_thumbnail_1600x1600.png",
+    "title": "MANON 新曲「ニセモノ smilin」—偽りの笑顔を突き破るエモーショナル・アンセム",
+    "subtitle": "9/19 配信スタート｜9/20 渋谷でリリース・イベント「PINK NOISE」開催（¥2,000）"
+  },
+  {
+    "id": "article2",
+    "thambnail_image_html_screenshot_path": "outputs/claude_opus_4_1_thumbnail.png",
+    "title": "Claude Opus 4.1 — The Most Capable AI for Complex Reasoning & Advanced Coding",
+    "subtitle": "Plus Claude Sonnet 4: high-performance reasoning and efficiency. Try it now at claude.ai"
+  },
+  {
+    "id": "article3",
+    "thambnail_image_html_screenshot_path": "outputs/article3_thumbnail_final.png",
+    "title": "World Context Protocol — EthereumがAIの『文脈の座標系』になる日 (決定論的24bit SemID)",
+    "subtitle": "CREATE2(keccak256(golay(bin(embedding(sentence)))))で生成される決定論的SemID、ステーキングと需要連動報酬で持続可能な知識インフラを実現"
+  }
+]

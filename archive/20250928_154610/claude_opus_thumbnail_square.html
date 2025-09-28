@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Claude Opus 4.1 Thumbnail - Square</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .thumbnail-container {
+            width: 1080px;
+            height: 1080px;
+            position: relative;
+            background: url('generated_20250928_154204.png') center/cover;
+            background-color: #0A0A0A;
+            overflow: hidden;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+        }
+
+        /* Background gradient overlay */
+        .gradient-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg,
+                rgba(10, 10, 10, 0.95) 0%,
+                rgba(10, 10, 10, 0.8) 40%,
+                rgba(10, 10, 10, 0.3) 60%,
+                transparent 80%);
+        }
+
+        /* Portrait container - positioned for square format */
+        .portrait-container {
+            position: absolute;
+            right: 40px;
+            top: 40px;
+            width: 45%;
+            height: 60%;
+            overflow: hidden;
+            border-radius: 12px;
+        }
+
+        .portrait {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center top;
+            filter: brightness(1.08) contrast(1.05);
+        }
+
+        .portrait-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg,
+                rgba(0, 194, 255, 0.05) 0%,
+                transparent 50%);
+            box-shadow: -20px 0 40px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Text content container - centered for square */
+        .content-container {
+            position: absolute;
+            left: 60px;
+            top: 60px;
+            width: calc(100% - 120px);
+            height: calc(40% - 60px);
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+
+        /* Opus badge */
+        .opus-badge {
+            display: inline-block;
+            background: #00C2FF;
+            color: #0A0A0A;
+            font-weight: 700;
+            font-size: 18px;
+            padding: 8px 16px;
+            border-radius: 20px;
+            margin-bottom: 16px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            width: fit-content;
+        }
+
+        /* Main headline - adjusted for square */
+        .headline {
+            color: #FFFFFF;
+            font-weight: 800;
+            font-size: 48px;
+            line-height: 1.1;
+            margin-bottom: 16px;
+            text-transform: none;
+            letter-spacing: -0.02em;
+        }
+
+        .headline .highlight {
+            text-transform: uppercase;
+            color: #00C2FF;
+        }
+
+        /* Subtitle */
+        .subtitle {
+            color: #D0D7DD;
+            font-weight: 500;
+            font-size: 20px;
+            line-height: 1.3;
+            margin-bottom: 20px;
+            opacity: 0.9;
+        }
+
+        /* CTA Badge */
+        .cta-badge {
+            background: rgba(0, 194, 255, 0.1);
+            border: 1px solid #00C2FF;
+            color: #00C2FF;
+            font-weight: 600;
+            font-size: 16px;
+            padding: 10px 18px;
+            border-radius: 8px;
+            text-decoration: none;
+            display: inline-block;
+            width: fit-content;
+            transition: all 0.2s ease;
+            position: absolute;
+            bottom: 120px;
+            left: 60px;
+        }
+
+        /* Microline */
+        .microline {
+            color: #666;
+            font-weight: 400;
+            font-size: 12px;
+            opacity: 0.7;
+            position: absolute;
+            bottom: 80px;
+            left: 60px;
+        }
+
+        /* Logo container */
+        .logo-container {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 240px;
+            height: 50px;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(10px);
+        }
+
+        .logo {
+            height: 20px;
+            opacity: 0.8;
+            filter: brightness(0.7);
+        }
+    </style>
+</head>
+<body>
+    <div class="thumbnail-container">
+        <div class="gradient-overlay"></div>
+
+        <!-- Portrait section -->
+        <div class="portrait-container">
+            <img src="../resource/article2/ceo.jpg" alt="Portrait" class="portrait">
+            <div class="portrait-overlay"></div>
+        </div>
+
+        <!-- Content section -->
+        <div class="content-container">
+            <div class="opus-badge">OPUS 4.1</div>
+
+            <h1 class="headline">
+                Claude <span class="highlight">OPUS 4.1</span> — The Most Capable AI for Complex Reasoning & Advanced Coding
+            </h1>
+
+            <p class="subtitle">
+                Plus Claude Sonnet 4: high‑performance reasoning & efficiency
+            </p>
+        </div>
+
+        <a href="#" class="cta-badge">Try it at claude.ai →</a>
+
+        <div class="microline">
+            Developer Console · API · Cookbook · Vision
+        </div>
+
+        <!-- Logo -->
+        <div class="logo-container">
+            <img src="../resource/article2/logo.png" alt="Anthropic" class="logo">
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Claude Opus 4.1 Thumbnail</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .thumbnail-container {
+            width: 1280px;
+            height: 720px;
+            background: linear-gradient(135deg, #0B0B0B 0%, #1a1a1a 50%, #0B0B0B 100%);
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Background gradient overlay */
+        .gradient-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg,
+                rgba(255, 255, 255, 0.02) 0%,
+                rgba(0, 229, 196, 0.03) 30%,
+                rgba(0, 0, 0, 0.1) 100%);
+            pointer-events: none;
+        }
+
+        /* Portrait section */
+        .portrait-section {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 30%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .portrait-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center top;
+            filter: brightness(1.1) contrast(1.05) saturate(1.1);
+            border-right: 2px solid #00E5C4;
+        }
+
+        .portrait-vignette {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(ellipse at center,
+                transparent 20%,
+                rgba(0, 0, 0, 0.3) 70%,
+                rgba(0, 0, 0, 0.6) 100%);
+            pointer-events: none;
+        }
+
+        /* Content section */
+        .content-section {
+            position: absolute;
+            left: 30%;
+            top: 0;
+            width: 70%;
+            height: 100%;
+            padding: 60px 80px 60px 60px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            z-index: 2;
+        }
+
+        /* Background wordmark */
+        .bg-wordmark {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0.08;
+            font-size: 120px;
+            font-weight: 800;
+            color: #ffffff;
+            letter-spacing: 8px;
+            z-index: 1;
+            user-select: none;
+            pointer-events: none;
+        }
+
+        /* Main headline */
+        .headline {
+            font-size: 72px;
+            font-weight: 800;
+            color: #ffffff;
+            line-height: 0.9;
+            margin-bottom: 20px;
+            letter-spacing: -2px;
+            text-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .headline .version {
+            color: #00E5C4;
+            font-size: 86px;
+            margin-left: 8px;
+        }
+
+        /* Divider line */
+        .divider {
+            width: 80px;
+            height: 3px;
+            background: #00E5C4;
+            margin-bottom: 25px;
+        }
+
+        /* Subtitle */
+        .subtitle {
+            font-size: 28px;
+            font-weight: 500;
+            color: #DDE5EA;
+            line-height: 1.3;
+            margin-bottom: 40px;
+            max-width: 500px;
+        }
+
+        /* CTA Button */
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            background: #00E5C4;
+            color: #000000;
+            padding: 16px 32px;
+            border-radius: 50px;
+            font-size: 18px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 20px rgba(0, 229, 196, 0.3);
+            width: fit-content;
+        }
+
+        .cta-button:hover {
+            background: #00d4b5;
+            transform: translateY(-2px);
+            box-shadow: 0 12px 25px rgba(0, 229, 196, 0.4);
+        }
+
+        .cta-arrow {
+            margin-left: 12px;
+            font-size: 16px;
+        }
+
+        /* Microcopy */
+        .microcopy {
+            position: absolute;
+            bottom: 30px;
+            right: 80px;
+            font-size: 14px;
+            color: #BFC7CC;
+            font-weight: 400;
+        }
+
+        /* Brand lockup */
+        .brand-lockup {
+            position: absolute;
+            bottom: 30px;
+            left: 30px;
+            width: 180px;
+            opacity: 1;
+            z-index: 10;
+        }
+
+        .brand-lockup img {
+            width: 100%;
+            height: auto;
+            filter: brightness(0) invert(1);
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 1400px) {
+            .thumbnail-container {
+                width: 1024px;
+                height: 576px;
+            }
+
+            .headline {
+                font-size: 58px;
+            }
+
+            .headline .version {
+                font-size: 70px;
+            }
+
+            .subtitle {
+                font-size: 24px;
+            }
+
+            .content-section {
+                padding: 50px 60px 50px 50px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="thumbnail-container">
+        <!-- Background gradient overlay -->
+        <div class="gradient-overlay"></div>
+
+        <!-- Background wordmark -->
+        <div class="bg-wordmark">ANTHROPIC</div>
+
+        <!-- Portrait section -->
+        <div class="portrait-section">
+            <img src="../resource/article2/ceo.jpg" alt="Portrait" class="portrait-image">
+            <div class="portrait-vignette"></div>
+        </div>
+
+        <!-- Content section -->
+        <div class="content-section">
+            <h1 class="headline">
+                CLAUDE OPUS<span class="version">4.1</span>
+            </h1>
+
+            <div class="divider"></div>
+
+            <p class="subtitle">
+                最も高度な推論とコーディング能力
+            </p>
+
+            <a href="https://claude.ai" class="cta-button">
+                Try claude.ai
+                <span class="cta-arrow">→</span>
+            </a>
+        </div>
+
+        <!-- Microcopy -->
+        <div class="microcopy">
+            Text · Code · Vision — Developer Console & API
+        </div>
+
+        <!-- Brand lockup -->
+        <div class="brand-lockup">
+            <img src="../resource/article2/logo.png" alt="Anthropic">
+        </div>
+    </div>
+</body>
+</html>
