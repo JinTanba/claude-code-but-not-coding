@@ -12,7 +12,7 @@ class ClaudeCodeClient:
     
     async def _receive_response(self, turn_count: int):
         """Claudeからのレスポンスを受信して処理します。"""
-        print(f"[ターン {turn_count}] Claude: ", end="")
+        print(f"[{turn_count}] Claude: ", end="")
         async for message in self.client.receive_response():
             # 最初のメッセージはセッションIDを含むシステム初期化メッセージです
             if hasattr(message, 'subtype') and message.subtype == 'init':
@@ -29,7 +29,8 @@ class ClaudeCodeClient:
 
     async def start_task(self, create_prompt_func):
         stream_prompt = create_prompt_func()
-        await self.client.connect()
+        if self.created_session_id is None:
+            await self.client.connect()
         print("⚡️ Claude Code SDK Session is started and Context is active!!")
         await self.client.query(stream_prompt())
 
@@ -46,12 +47,15 @@ class ClaudeCodeClient:
                         print("🤖",block.text, end="")
 
     async def start(self):
-        await self.client.connect()
+        if self.created_session_id is None:
+            await self.client.connect()
+        else:
+            print("⚡️ Claude Code SDK Session is resumed and Context is active!!")
         print("⚡️ Claude Code SDK Session is started and Context is active!!")
         print("コマンド: 終了するには 'exit'、現在のタスクを停止するには 'interrupt'、新しいセッションには 'new'")
 
         while True:
-            user_input = input(f"\n[ターン {self.turn_count + 1}] あなた: ")
+            user_input = input(f"\n[👨‍💻 c:{self.turn_count + 1}] You: ")
             
             if user_input.lower() == 'exit':
                 break
